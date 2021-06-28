@@ -124,8 +124,11 @@ function createCards (pokemonBase, nb) {
 		// Création de la div poke__card englobante
 		let pokeCard = document.createElement("div")
 		pokeCard.classList.add("poke__card")
+
+		
 		pokeCard.setAttribute("id", pokemonBase[indexCards].id)
 		pokeCard.style.backgroundColor = colorType
+		verifySelection(pokemonBase[indexCards], pokeCard)
 		
 		// Création du titre avec le nom du pokémon
 		let pokeName = document.createElement("h3")
@@ -152,6 +155,14 @@ function createCards (pokemonBase, nb) {
 
 		container.append(pokeCard)
 		indexCards++
+	}
+}
+
+function verifySelection(pokemon, pokemonCard) {
+	for (let i = 0; i < comparisonTable.length; i++) {
+		if(pokemonCard.id == comparisonTable[i]) {
+			pokemonCard.classList.add("selected")
+		}
 	}
 }
 
