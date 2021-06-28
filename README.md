@@ -12,7 +12,7 @@
 
 ## Overview
 ![](./images/screenshot1.png)
-![](./images/screenshot2.png)
+![Comparison](./images/screenshot2.png)
 
 ### The project
 
