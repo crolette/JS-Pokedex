@@ -1,0 +1,452 @@
+:root {
+    --grass: #78c850;
+    --ground: #E2BF65;
+    --dragon: #6F35FC;
+    --fire: #F58271;
+    --electric: #F7D02C;
+    --fairy: #D685AD;
+    --poison: #966DA3;
+    --bug: #B3F594;
+    --water: #6390F0;
+    --normal: #D9D5D8;
+    --psychic: #F95587;
+    --flying: #A98FF3;
+    --fighting: #C25956;
+    --rock: #B6A136;
+    --ghost: #735797;
+    --ice: #96D9D6;
+    --primary: #2D70B7;
+    --focus: #FFCB05;
+}
+
+
+/* RESET CSS */ 
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* END RESET CSS */
+
+
+
+/* TYPOGRAPHY */
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: clamp(16px, 1vw, 24px);
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+
+/* LAYOUT */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 16px;
+    background: rgb(240, 240, 240);
+    z-index: 0;
+    min-width: 100vw;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 16px;
+    width: 90%;
+    max-width: 1440px;
+    position: sticky;
+    top: 0;
+    padding: 32px 0;
+    background: rgb(240, 240, 240);
+    z-index: 50;
+}
+
+.pokemon-logo {
+    width: 50%;
+    max-width: 350px ;
+    height: auto;
+}
+
+
+.container__cards {
+    display: flex;
+    align-content: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    width: 90%;
+    max-width: 1440px;
+}
+
+
+/* CARD */ 
+.poke__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    
+    width: 175px;
+    height: 150px;
+    padding: 25px 10px 10px 10px;
+    
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+    background-image: linear-gradient(to right bottom, rgba(255,255,225,0.25), rgba(255,255,225,0.75));
+    box-shadow: 0 0 5px rgb(104, 104, 104);
+
+    cursor: pointer;
+}
+
+.poke__card.selected {
+    background-color: black!important;
+}
+
+.poke__card h3 {
+    font-weight: 700;
+    text-transform: uppercase;
+    /* font-size: 1rem; */
+}
+
+.poke__card img,
+.poke__card p,
+.poke__card h3 {
+    pointer-events: none;
+}
+
+.poke__card img {
+    width: 65%;
+    height: auto;
+    filter: drop-shadow(0 0 5px black)
+    
+}
+
+.type {
+    position: absolute;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.75rem;
+    padding: 4px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    top: 0; 
+    right:0;
+}
+
+
+.id {
+    position: absolute;
+    font-weight: bold;
+    font-size: 0.75rem;
+    padding: 4px;
+    border-top-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    top: 0; 
+    left:0;
+}
+
+
+
+/* COMPARAISON */
+.comparison__form {
+    display: flex;
+    justify-content: space-around;
+    column-gap: 32px;
+    text-align: center;
+}
+
+.comparison__choice {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    row-gap: 8px
+}
+
+.btn_comparison,
+select {
+    height: 50px;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 8px 16px;
+    position: sticky;
+    right: 32px;
+    bottom: 32px;
+    background: var(--primary);
+    border: 1px solid var(--focus);
+    color: var(--focus);
+    font-size: 1rem;
+}
+
+.btn_comparison:hover,
+select:hover {
+    background: var(--focus);
+    color: var(--primary);
+} 
+
+.comparison,
+.modale {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    text-align: center;
+    z-index: 150;
+}
+
+.comparison::after {
+    content:"";
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.75);
+    position: absolute;
+    top: -50px;
+    z-index: -100;
+    pointer-events: none;
+}
+
+.comparison__close,
+.modale__close {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: 16px;
+    top: 8px;
+    cursor: pointer;
+}
+
+
+.comparison_table {
+    margin: 0 auto;
+    padding: 16px;
+    pointer-events: none;
+    text-transform: uppercase;
+}
+
+
+
+.comparaison_pokemon {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.comparison_table th {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+
+.comparison_table th,
+.comparison_table td {
+    padding: 16px;
+    border-bottom: 1px solid #ddd;
+}
+
+.comparison_table tr:nth-child(even) {
+    background-color: #fefefe;
+}
+
+.comparison_table tr:nth-child(odd) {
+    background-color: #f6faff;
+}
+
+
+.comparison_table tr td:first-child {
+    text-align: right;
+    font-weight: bold;
+}
+
+/* COMPARISON LIST */
+.comparison__list {
+    display: none;
+    justify-content: space-evenly;
+    column-gap: 8px;
+    width: auto;
+    background: #fff;
+    position: fixed;
+    bottom: 0;
+    padding: 16px;
+    border-radius: 8px 8px 0 0;
+    background: var(--primary);
+    border: 4px solid var(--focus);
+    box-shadow: 0 0 5px var(--primary);
+    color: var(--primary);
+}
+
+.list__card {
+    padding: 8px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    background: var(--focus);
+    width: 125px;
+    font-size: 0.85rem; 
+    text-align: center;
+    font-weight: bold; 
+}
+
+.list__card img {
+    height: 75px;
+    width: 75px; 
+}
+
+.list__card p {
+    text-transform: uppercase;
+}
+
+
+/* FILTER */
+select,
+option {
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.reset {
+    background-color: rgb(219, 86, 86);
+}
+
+/* MODALE */ 
+.modale {
+    height: 250px; 
+    width: 250px;
+    padding: 16px;
+    background-color: white;
+    font-size: 2rem;
+}
+
+
+.modale__close {
+    cursor:pointer;
+}
+
+
+.modale:not(.is-active) {
+    display: none;
+}
+
+
+/* FOOTER */
+footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+footer img {
+    width: 50px;
+    filter: drop-shadow(0 0 2px white)
+}
+
+
+@media screen and (max-width:767px) {
+    .btn_comparison,
+    select {
+        font-size: 1rem;
+    }
+
+    .comparison {
+        font-size: 12px;
+    } 
+
+    .comparison td:first-child {
+        display: none;
+    }
+
+    .comparison_table th,
+    .comparison_table td {
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .comparaison_image {
+        display: none;
+    }
+    
+    .comparison__list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        row-gap: 8px;   
+    }
+
+    .list__card img {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 475px) {
+    .poke__card {
+        width: 150px;
+        height: 125px;
+        
+    }
+    
+    /* COMPARAISON */
+    .comparison__form {
+        flex-direction: column;
+        row-gap: 16px;
+    }
+}
